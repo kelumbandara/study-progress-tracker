@@ -1,0 +1,1 @@
+{"name":"study-tracker-e2e","private":true,"description":"Optional real-browser tests (Microsoft Edge via Playwright). Not needed to run the app.","scripts":{"test":"node run.js","concurrency":"node conc.js"},"dependencies":{"playwright-core":"^1.49.0"}}
