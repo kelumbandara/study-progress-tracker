@@ -69,6 +69,7 @@ In the application's **Environment Variables** add these. **Untick "Available at
 | `CACHE_STORE` | `database` | |
 | `QUEUE_CONNECTION` | `sync` | The app has no background jobs |
 | `TRUSTED_PROXIES` | `*` | Coolify's proxy sits in front of the container |
+| `TRACKER_LOAD_LIBRARY` | `true` | First deploy only: loads the syllabus, past-paper list and 2024 questions automatically (never repeats once the syllabus has topics) |
 | `SANCTUM_TOKEN_EXPIRATION` | *(optional)* `525600` | Minutes a phone stays signed in (default 365 days) |
 
 **Generate `APP_KEY`:** on any computer with PHP, in the project folder run `php artisan key:generate --show` and paste the whole result (it starts with `base64:`). Keep it secret and keep a copy: if you lose it, existing sessions stop working (data is not lost).

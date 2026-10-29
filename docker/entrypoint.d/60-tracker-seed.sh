@@ -7,4 +7,9 @@ set -e
 if [ "${AUTORUN_ENABLED:-false}" = "true" ]; then
     echo "Ensuring the starting data exists (safe to repeat)..."
     php /var/www/html/artisan db:seed --force --no-interaction
+    # First deploy only: set TRACKER_LOAD_LIBRARY=true to load the syllabus, past-paper list and 2024 questions.
+    # --if-empty means it never runs again once the syllabus has topics, so later edits are never repeated over.
+    if [ "${TRACKER_LOAD_LIBRARY:-false}" = "true" ]; then
+        php /var/www/html/artisan tracker:load-library --if-empty --no-interaction
+    fi
 fi

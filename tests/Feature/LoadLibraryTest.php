@@ -30,4 +30,18 @@ class LoadLibraryTest extends TestCase
         $this->assertSame(6, ExamPaper::whereNotNull('paper_url')->count());
         $this->assertSame(0, ExamPaper::where('exam_year', 2023)->whereNotNull('duration_minutes')->count());
     }
+
+    public function test_the_automatic_first_start_load_runs_once_and_never_overwrites_later(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $this->artisan('tracker:load-library --if-empty')->assertSuccessful();
+        $first = SyllabusTopic::count();
+        $this->assertGreaterThan(100, $first);
+
+        SyllabusTopic::query()->first()->update(['name' => 'Renamed by the student']);
+        $this->artisan('tracker:load-library --if-empty')->expectsOutputToContain('already loaded')->assertSuccessful();
+        $this->assertSame($first, SyllabusTopic::count());
+        $this->assertSame(1, SyllabusTopic::where('name', 'Renamed by the student')->count());
+    }
 }

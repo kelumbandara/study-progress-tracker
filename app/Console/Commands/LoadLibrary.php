@@ -2,13 +2,14 @@
 
 namespace App\Console\Commands;
 
+use App\Models\SyllabusTopic;
 use App\Services\ImportService;
 use Illuminate\Console\Command;
 
 /** One-time (and safe to repeat) setup of a fresh server: the NIE syllabus, the past-paper list and the 2024 questions. */
 class LoadLibrary extends Command
 {
-    protected $signature = 'tracker:load-library';
+    protected $signature = 'tracker:load-library {--if-empty : Do nothing when the syllabus already has topics (used for the automatic first-start load)}';
 
     protected $description = 'Load the NIE syllabus, the 2016-2025 past-paper list and the verified 2024 questions (existing rows are skipped)';
 
@@ -20,6 +21,12 @@ class LoadLibrary extends Command
 
     public function handle(ImportService $import): int
     {
+        if ($this->option('if-empty') && SyllabusTopic::query()->exists()) {
+            $this->line('The library is already loaded; nothing to do.');
+
+            return self::SUCCESS;
+        }
+
         foreach (self::STEPS as $type => [$file, $label]) {
             $path = database_path('data/' . $file);
             if (! is_file($path)) {
