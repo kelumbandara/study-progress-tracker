@@ -113,3 +113,15 @@ Use the CSV or Excel templates in `database/data/templates/`. Required columns: 
 ## 13. Words used
 
 *Independent*: done without help. *Assisted*: someone or something helped. *Allocation*: part of a daily total spent on a topic or question (never added again). *Linear plan*: planned hours spread evenly over all days of the period. *Competency level*: the NIE syllabus's numbered learning step.
+
+## Phone use (what the student does on the phone)
+
+The installed **ezexam** Android app can send how many minutes each app was open (for example WhatsApp 45 min, YouTube 40 min) to the student's own dashboard.
+
+- **Off by default.** The student switches it on in the app: More → Phone use → "Share my phone use with my dashboard". Android then asks for **Usage access** for ezexam (the student turns it on once in Android settings).
+- **What is sent:** only the name of each app and the minutes it was open per day. **Never** messages, links, videos watched, photos or screen content.
+- **When:** each time the app is opened (and when it returns to the foreground), the last week is brought up to date. A day the phone never reported shows as "no data", not as zero.
+- **Where it shows:** the website's **Phone Use** page and a card on the Dashboard (7, 14 or 30 days, by kind of app).
+- **Control:** the student can stop sharing and erase everything from the phone app, and can also erase it on the website's Phone Use page.
+- **Not possible:** reading which YouTube videos or links were opened. Android does not allow that without spying on the screen, so ezexam does not do it.
+
