@@ -21,6 +21,7 @@ export interface ApiClient {
   get<T>(path: string, query?: Record<string, string | number | undefined>): Promise<T>;
   post<T>(path: string, body?: unknown, options?: RequestOptions): Promise<T>;
   put<T>(path: string, body?: unknown): Promise<T>;
+  delete<T>(path: string): Promise<T>;
 }
 
 type ErrorBody = { message?: unknown; errors?: unknown };
@@ -113,5 +114,6 @@ export function createApiClient(opts: ApiClientOptions): ApiClient {
     get: (path, query) => request('GET', path, undefined, query),
     post: (path, body, options) => request('POST', path, body ?? {}, undefined, options?.auth ?? true),
     put: (path, body) => request('PUT', path, body ?? {}),
+    delete: (path) => request('DELETE', path),
   };
 }

@@ -43,7 +43,7 @@ export default function SignInScreen() {
   return (
     <Screen edges={['top', 'bottom', 'left', 'right']}>
       <AppText variant="title" accessibilityRole="header" style={{ marginTop: 24, marginBottom: 4 }}>
-        A/L Study Tracker
+        ezexam
       </AppText>
       <AppText tone="muted" style={{ marginBottom: 20 }}>
         Sign in with the same e-mail and password you use on the website.

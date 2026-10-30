@@ -25,7 +25,7 @@ async function fill(server: string, email: string, password: string) {
 describe('<SignInScreen />', () => {
   test('shows what to enter, with the password hidden', async () => {
     await renderApp(<SignInScreen />, { when: 'signedOut' });
-    expect(screen.getByText('A/L Study Tracker')).toBeTruthy();
+    expect(screen.getByText('ezexam')).toBeTruthy();
     expect(screen.getByTestId('password').props.secureTextEntry).toBe(true);
     expect(screen.getByLabelText('Show password')).toBeTruthy();
   });

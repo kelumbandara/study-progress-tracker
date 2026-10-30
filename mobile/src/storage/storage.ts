@@ -12,6 +12,10 @@ export const KEYS = {
   token: 'altracker.token',
   user: 'altracker.user',
   server: 'altracker.server',
+  /** "1" once the student has switched phone-use sharing on. Off by default. */
+  phoneShare: 'ezexam.phoneShare',
+  /** The last day (YYYY-MM-DD) that was sent to the server. */
+  phoneLast: 'ezexam.phoneLast',
 } as const;
 
 export const storage = {

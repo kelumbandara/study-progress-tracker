@@ -17,6 +17,7 @@ export default function MoreStack() {
       <Stack.Screen name="syllabus" options={{ title: 'Syllabus' }} />
       <Stack.Screen name="reports" options={{ title: 'Reports' }} />
       <Stack.Screen name="history" options={{ title: 'History and corrections' }} />
+      <Stack.Screen name="phone-use" options={{ title: 'Phone use' }} />
     </Stack>
   );
 }

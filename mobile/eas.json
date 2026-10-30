@@ -13,6 +13,18 @@
       "env": {
         "EXPO_PUBLIC_API_URL": "https://ezexam.edusl.net"
       }
+    },
+    "emulator-test": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "credentialsSource": "local"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://10.0.2.2:8081",
+        "EXPO_PUBLIC_ALLOW_HTTP": "1",
+        "ALLOW_CLEARTEXT": "1"
+      }
     }
   }
 }

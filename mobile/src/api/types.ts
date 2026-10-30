@@ -380,3 +380,30 @@ export interface TheoryCorrection {
   confidence?: number | null;
   notes?: string | null;
 }
+
+// ---- Phone use (minutes per app) ----
+
+export interface AppUse {
+  package: string;
+  label: string;
+  minutes: number;
+}
+
+export interface PhoneUsageSaved {
+  date: string;
+  apps_stored: number;
+  total_minutes: number | null;
+  synced_at: string;
+}
+
+export interface PhoneUsageSummary {
+  from: string;
+  to: string;
+  /** total_minutes is null for a day the phone has not reported (that is not the same as 0). */
+  days: { date: string; total_minutes: number | null; apps: (AppUse & { category: string })[] }[];
+  days_with_data: number;
+  total_minutes: number;
+  avg_per_logged_day: number | null;
+  top_apps: (AppUse & { category: string; days: number })[];
+  last_sync: string | null;
+}

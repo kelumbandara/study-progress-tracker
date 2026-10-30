@@ -26,6 +26,8 @@ const config: ExpoConfig = {
       monochromeImage: './assets/android-icon-monochrome.png',
     },
     predictiveBackGestureEnabled: false,
+    // Only the development/test build (which talks to a server on the local network) needs this; the real app does not ask for it.
+    ...(process.env.ALLOW_CLEARTEXT === '1' ? { permissions: ['android.permission.ACCESS_LOCAL_NETWORK'] } : {}),
     // The app stores nothing worth backing up: the token lives in the Keystore and all data is on the server.
     allowBackup: false,
   },

@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import { type ColorValue, Text } from 'react-native';
 
+import { useAutoPhoneUseSync } from '@/features/phoneUse/usePhoneUse';
 import { usePalette } from '@/ui/theme';
 
 function icon(glyph: string) {
@@ -12,6 +13,7 @@ function icon(glyph: string) {
 
 export default function AppTabs() {
   const p = usePalette();
+  useAutoPhoneUseSync(); // sends phone use in the background, only when the student has switched sharing on
   return (
     <Tabs
       screenOptions={{

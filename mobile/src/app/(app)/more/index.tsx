@@ -43,6 +43,7 @@ export default function MoreScreen() {
     <Screen>
       <MoreLink href="/more/syllabus" title="Syllabus" text="Every topic and where you stand; change a topic's status." testID="open-syllabus" />
       <MoreLink href="/more/reports" title="Reports" text="Weekly and monthly summaries of hours, questions and revision." testID="open-reports" />
+      <MoreLink href="/more/phone-use" title="Phone use" text="Share how long you use each app (minutes only) with your own dashboard. You can switch it off and erase it any time." testID="open-phone-use" />
       <MoreLink href="/more/history" title="History and corrections" text="Look back at earlier attempts and theory study, and correct a mistake." testID="open-history" />
 
       <Card title="Account">

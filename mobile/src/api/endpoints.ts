@@ -1,5 +1,6 @@
 import type { ApiClient } from './client';
 import type {
+  AppUse,
   AttemptCorrection,
   AttemptInput,
   AttemptPage,
@@ -13,6 +14,8 @@ import type {
   MistakeRow,
   Paper,
   PaperInput,
+  PhoneUsageSaved,
+  PhoneUsageSummary,
   Question,
   QuestionInput,
   Report,
@@ -59,6 +62,10 @@ export function createEndpoints(client: ApiClient) {
     correctAttempt: (id: number, input: AttemptCorrection) => client.put<{ attempt: AttemptPage['data'][number] }>(`/attempts/${id}`, input),
     theoryPage: (page: number) => client.get<TheoryPage>('/theory', { per_page: 15, page }),
     correctTheory: (id: number, input: TheoryCorrection) => client.put<TheorySaved>(`/theory/${id}`, input),
+
+    sendPhoneUsage: (date: string, apps: AppUse[]) => client.put<PhoneUsageSaved>(`/phone-usage/${date}`, { apps }),
+    phoneUsageSummary: (days = 7) => client.get<PhoneUsageSummary>('/phone-usage', { days }),
+    erasePhoneUsage: () => client.delete<{ deleted_rows: number }>('/phone-usage'),
 
     reviewMistake: (input: MistakeReviewInput) => client.post<{ review: { id: number; question_id: number; reviewed_on: string } }>('/mistakes', input),
   };
