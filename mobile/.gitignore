@@ -39,3 +39,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# EAS local credentials (signing key + passwords): never commit
+credentials.json
+*.jks

@@ -8,7 +8,9 @@ import type { ExpoConfig } from 'expo/config';
  */
 const config: ExpoConfig = {
   name: 'ezexam',
-  slug: 'ezexam',
+  slug: 'study-progress-tracker', // must match the Expo project name; the app is still called "ezexam" on the phone
+  owner: 'sky-smart-technology',
+  extra: { eas: { projectId: '2366538d-e0dd-4113-b7ed-5ef0a6393851' } },
   scheme: 'ezexam',
   version: '1.0.0',
   orientation: 'default',

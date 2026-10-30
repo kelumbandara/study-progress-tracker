@@ -8,6 +8,8 @@ const { withAppBuildGradle } = require('expo/config-plugins');
 
 module.exports = function withReleaseSigning(config) {
   return withAppBuildGradle(config, (c) => {
+    // On Expo's cloud builder (EAS) the signing key is injected by EAS itself, so leave the file alone.
+    if (process.env.EAS_BUILD) return c;
     let g = c.modResults.contents;
     if (g.includes('EZEXAM_STORE_FILE')) return c;
 
