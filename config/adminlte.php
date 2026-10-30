@@ -313,6 +313,7 @@ return [
         ['text' => 'Past Papers', 'route' => 'papers.index', 'icon' => 'fas fa-fw fa-folder-open'],
         ['text' => 'Attempt History', 'route' => 'attempts.index', 'icon' => 'fas fa-fw fa-history'],
         ['text' => 'Reports', 'route' => 'reports.index', 'icon' => 'fas fa-fw fa-chart-line'],
+        ['text' => 'Phone Use', 'route' => 'phone-usage.index', 'icon' => 'fas fa-fw fa-mobile-alt'],
         ['header' => 'SETUP'],
         ['text' => 'Settings', 'route' => 'settings.edit', 'icon' => 'fas fa-fw fa-cog'],
         ['text' => 'Change password', 'route' => 'account.password', 'icon' => 'fas fa-fw fa-key'],

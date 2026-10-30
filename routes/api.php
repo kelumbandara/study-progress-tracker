@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\DailyLogController;
 use App\Http\Controllers\Api\V1\DashboardController;
 use App\Http\Controllers\Api\V1\MistakeController;
 use App\Http\Controllers\Api\V1\PaperController;
+use App\Http\Controllers\Api\V1\PhoneUsageController;
 use App\Http\Controllers\Api\V1\ReportController;
 use App\Http\Controllers\Api\V1\SyllabusController;
 use App\Http\Controllers\Api\V1\TheoryController;
@@ -56,5 +57,9 @@ Route::prefix('v1')->group(function () {
         Route::post('/mistakes', [MistakeController::class, 'store']);
 
         Route::get('/reports', [ReportController::class, 'show']);
+
+        Route::get('/phone-usage', [PhoneUsageController::class, 'show']);
+        Route::put('/phone-usage/{date}', [PhoneUsageController::class, 'store'])->where('date', '[0-9]{4}-[0-9]{2}-[0-9]{2}');
+        Route::delete('/phone-usage', [PhoneUsageController::class, 'destroy']);
     });
 });

@@ -14,6 +14,7 @@ return [
     'Past Papers' => 'පසුගිය ප්‍රශ්න පත්‍ර',
     'Attempt History' => 'උත්සාහ ඉතිහාසය',
     'Reports' => 'වාර්තා',
+    'Phone Use' => 'දුරකථන භාවිතය',
     'SETUP' => 'සැකසුම්',
     'Settings' => 'සැකසුම්',
     'Change password' => 'මුරපදය වෙනස් කරන්න',

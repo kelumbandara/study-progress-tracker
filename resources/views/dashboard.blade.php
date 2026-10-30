@@ -173,6 +173,24 @@
         </div>
     </div>
 
+    {{-- Phone use (reported by the phone app) --}}
+    <div class="card">
+        <div class="card-header"><h3 class="card-title"><i class="fas fa-mobile-alt"></i> {{ __('Phone use (last 7 days)') }}</h3>
+            <div class="card-tools"><a href="{{ route('phone-usage.index') }}" class="btn btn-tool">{{ __('Details') }} <i class="fas fa-arrow-right"></i></a></div></div>
+        <div class="card-body">
+            @if ($phone['days_with_data'] === 0)
+                <p class="text-muted mb-0">{{ __('No phone use reported yet.') }} {{ __('Open the ezexam phone app → More → Phone use, turn on Usage access, and the minutes will appear here.') }}</p>
+            @else
+                <div class="row text-center mb-2">
+                    <div class="col-4"><div class="text-muted small">{{ __('Today') }}</div><div class="h5 mb-0">{{ ($phone['today']['total_minutes'] ?? null) !== null ? Duration::format($phone['today']['total_minutes']) : __('no data') }}</div></div>
+                    <div class="col-4"><div class="text-muted small">{{ __('Average per reported day') }}</div><div class="h5 mb-0">{{ Duration::format($phone['avg_per_logged_day']) }}</div></div>
+                    <div class="col-4"><div class="text-muted small">{{ __('Days reported') }}</div><div class="h5 mb-0">{{ $phone['days_with_data'] }} / 7</div></div>
+                </div>
+                <div class="small">@foreach (array_slice($phone['top_apps'], 0, 5) as $a)<span class="badge badge-light border mr-1">{{ $a['label'] }} · {{ Duration::format($a['minutes']) }}</span>@endforeach</div>
+            @endif
+        </div>
+    </div>
+
     {{-- Charts --}}
     <div class="row">
         <div class="col-12 col-lg-6"><div class="card"><div class="card-header"><h3 class="card-title">{{ __('Planned vs actual hours') }}</h3></div>

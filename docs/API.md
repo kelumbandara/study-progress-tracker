@@ -88,6 +88,14 @@ Call `/bootstrap` once when the app opens; the option lists (statuses, results, 
 | `POST /mistakes` | `question_id`, `reviewed_on`, and the booleans `theory_reviewed`, `solution_understood`, `reattempted`, `mastered_independently` (**422** unless the latest attempt is independent and at least 80%) |
 | `GET /reports` | `type` (`weekly`/`monthly`), `anchor` (a date in the wanted week or month) **or** `from`+`to` (at most 400 days), optional `subject_id`. Same content as the website report. Excel/CSV export and printing stay on the website |
 
+### Phone use (minutes per app)
+
+| Call | Notes |
+|---|---|
+| `PUT /phone-usage/{date}` | Body `{"apps":[{"package":"com.whatsapp","label":"WhatsApp","minutes":45}, ...]}`. The phone sends the **complete** day, which replaces what the server held for that date (repeating is harmless). `minutes` 0 to 1440; `package` letters, digits, dots and underscores; at most 300 apps; dates from the last 31 days up to today. Apps with 0 minutes are dropped. Returns `apps_stored`, `total_minutes`, `synced_at`. Only names and minutes are ever sent: no messages, links or screen content |
+| `GET /phone-usage?days=7` | Summary ending today (1 to 90 days): `days[]` (`total_minutes` is **null** for a day the phone never reported, which is not the same as 0), `top_apps[]`, `categories`, `avg_per_logged_day`, `last_sync`, `today` |
+| `DELETE /phone-usage` | Erases everything the phone ever sent (`deleted_rows`) |
+
 ## Trying it with curl
 
 ```bash

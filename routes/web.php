@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MistakeController;
 use App\Http\Controllers\PaperController;
+use App\Http\Controllers\PhoneUsageController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SampleDataController;
 use App\Http\Controllers\SettingsController;
@@ -65,6 +66,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/paper-attempts/{paperAttempt}/edit', [AttemptController::class, 'editPaper'])->name('paper-attempts.edit')->whereNumber('paperAttempt');
     Route::put('/paper-attempts/{paperAttempt}', [AttemptController::class, 'updatePaper'])->name('paper-attempts.update')->whereNumber('paperAttempt');
     Route::post('/paper-attempts', [AttemptController::class, 'storePaper'])->name('paper-attempts.store');
+
+    Route::get('/phone-usage', [PhoneUsageController::class, 'index'])->name('phone-usage.index');
+    Route::delete('/phone-usage', [PhoneUsageController::class, 'destroy'])->name('phone-usage.destroy');
 
     Route::get('/theory', [TheoryController::class, 'index'])->name('theory.index');
     Route::post('/theory', [TheoryController::class, 'store'])->name('theory.store');

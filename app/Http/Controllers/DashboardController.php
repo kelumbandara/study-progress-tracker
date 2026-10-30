@@ -8,6 +8,7 @@ use App\Models\StudySetting;
 use App\Models\Subject;
 use App\Services\AnalyticsService;
 use App\Services\MistakeService;
+use App\Services\PhoneUsageService;
 use App\Services\RecommendationService;
 use App\Services\StudyPeriodService;
 use App\Services\TargetProgressService;
@@ -15,7 +16,7 @@ use Carbon\CarbonImmutable;
 
 class DashboardController extends Controller
 {
-    public function index(StudyPeriodService $periods, TargetProgressService $progress, AnalyticsService $analytics, RecommendationService $recommendations, MistakeService $mistakes)
+    public function index(StudyPeriodService $periods, TargetProgressService $progress, AnalyticsService $analytics, RecommendationService $recommendations, MistakeService $mistakes, PhoneUsageService $phoneUsage)
     {
         $student = StudentProfile::current();
         $settings = StudySetting::query()->where('student_id', $student->id)->firstOrFail();
@@ -41,6 +42,7 @@ class DashboardController extends Controller
                 'planned' => $c['planned'] !== null ? round($c['planned'] / 60, 1) : null,
                 'actual' => round($c['actual'] / 60, 1),
             ])->values(),
+            'phone' => $phoneUsage->summary($student->id, CarbonImmutable::parse($today, $settings->timezone)->subDays(6), CarbonImmutable::parse($today, $settings->timezone), CarbonImmutable::parse($today, $settings->timezone)),
             'weekly' => $analytics->weeklyHours($student->id),
             'scoreTrend' => $analytics->scoreTrend($student->id),
         ]);
