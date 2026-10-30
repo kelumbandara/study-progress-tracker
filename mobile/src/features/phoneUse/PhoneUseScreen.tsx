@@ -106,7 +106,7 @@ export function PhoneUseScreen() {
       <Card title="Sharing">
         <SwitchRow
           label="Share my phone use with my dashboard"
-          hint="Off until you turn it on."
+          hint={sharing ? 'On. Only app names and minutes are sent.' : 'Off until you turn it on.'}
           value={sharing}
           onChange={(on) => {
             setErased(null);

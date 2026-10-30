@@ -12,13 +12,13 @@ const config: ExpoConfig = {
   owner: 'sky-smart-technology',
   extra: { eas: { projectId: '2366538d-e0dd-4113-b7ed-5ef0a6393851' } },
   scheme: 'ezexam',
-  version: '1.0.0',
+  version: '1.1.0',
   orientation: 'default',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
   android: {
     package: 'net.edusl.ezexam',
-    versionCode: 1,
+    versionCode: 2,
     adaptiveIcon: {
       backgroundColor: '#E6F4FE',
       foregroundImage: './assets/android-icon-foreground.png',
