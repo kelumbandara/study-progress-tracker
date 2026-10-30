@@ -104,8 +104,12 @@ class PhoneUsageModule : Module() {
     for ((p, s) in since) add(p, end - s)
 
     val pm = context.packageManager
-    val homeApps = pm.queryIntentActivities(Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME), 0)
-      .map { it.activityInfo.packageName }.toSet()
+    // Skip only the phone's own home screen. (Many apps, including Android Settings, also declare a "fallback home"
+    // component, so excluding everything that can act as a home screen would wrongly hide them.)
+    val homeApps = setOfNotNull(
+      pm.resolveActivity(Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME), PackageManager.MATCH_DEFAULT_ONLY)
+        ?.activityInfo?.packageName
+    )
 
     val out = ArrayList<Map<String, Any>>()
     for ((pkg, ms) in millis) {
