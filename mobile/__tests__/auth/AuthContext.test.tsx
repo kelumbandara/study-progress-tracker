@@ -70,7 +70,7 @@ describe('AuthProvider', () => {
     expect(call.path).toBe('/auth/login');
     expect(call.headers.Authorization).toBeUndefined();
     expect(call.body).toMatchObject({ email: 'Student@Example.com', password: 'a long password 1' });
-    expect(call.body.device_name).toMatch(/A\/L Tracker/);
+    expect(call.body.device_name).toMatch(/ezexam/);
   });
 
   test('a wrong password leaves the phone signed out with nothing stored, and shows the server message', async () => {
