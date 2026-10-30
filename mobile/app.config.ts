@@ -1,21 +1,21 @@
 import type { ExpoConfig } from 'expo/config';
 
 /**
- * A/L Study Tracker (Android). Server address, "may use http" and cleartext are decided at BUILD time:
+ * ezexam, the A/L study tracker (Android). Server address, "may use http" and cleartext are decided at BUILD time:
  *   EXPO_PUBLIC_API_URL      default server address shown on the sign-in screen (e.g. https://tracker.example.com)
  *   EXPO_PUBLIC_ALLOW_HTTP   "1" lets the app use plain http (development only; release builds must use https)
  *   ALLOW_CLEARTEXT          "1" lets the Android build open plain-http connections (development only)
  */
 const config: ExpoConfig = {
-  name: 'A/L Tracker',
-  slug: 'al-study-tracker',
-  scheme: 'altracker',
-  version: '0.1.0',
+  name: 'ezexam',
+  slug: 'ezexam',
+  scheme: 'ezexam',
+  version: '1.0.0',
   orientation: 'default',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
   android: {
-    package: 'lk.altracker.app',
+    package: 'net.edusl.ezexam',
     versionCode: 1,
     adaptiveIcon: {
       backgroundColor: '#E6F4FE',
@@ -31,6 +31,7 @@ const config: ExpoConfig = {
   plugins: [
     'expo-router',
     'expo-secure-store',
+    './plugins/withReleaseSigning',
     ['expo-build-properties', { android: { usesCleartextTraffic: process.env.ALLOW_CLEARTEXT === '1' } }],
   ],
   experiments: { typedRoutes: true },

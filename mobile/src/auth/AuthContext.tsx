@@ -29,7 +29,7 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 function deviceName(): string {
   const name = Platform.OS === 'web' ? 'Web browser' : (Constants.deviceName ?? 'Android phone');
-  return `${name} (A/L Tracker)`.slice(0, 100);
+  return `${name} (ezexam)`.slice(0, 100);
 }
 
 /** Waits for a promise to finish (success or failure) but never longer than `ms`; the timer is cancelled as soon as it finishes. */

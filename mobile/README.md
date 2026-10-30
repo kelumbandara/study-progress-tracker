@@ -1,4 +1,4 @@
-# A/L Tracker – phone app (Expo / React Native)
+# ezexam – phone app (Expo / React Native)
 
 Android app for the A/L Study Progress Tracker. It talks to the Laravel app through the token API (`/api/v1`, see `../docs/API.md`). One shared account; sign in with e-mail and password.
 
